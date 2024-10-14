@@ -10,17 +10,22 @@ import java.util.stream.Collectors;
 
 public class ProductFilter {
 
-    private final Set<String> recalledProducts;
+    private Set<String> recalledProducts;
 
     public ProductFilter(Set<String> recalledProducts) {
         this.recalledProducts = recalledProducts;
     }
 
     public List<Product> removeRecalledFrom(Collection<Product> allProduct) {
-        return allProduct.stream().filter(ProductFilter::filterByName).collect(Collectors.toList());
+        return allProduct.stream().filter(this ::filterByName).collect(Collectors.toList());
     }
 
-    private static boolean filterByName(Product product) {
-        return true;
+    private boolean filterByName(Product product) {
+
+        if (!recalledProducts.contains(product.getName())) {
+            return false;
+        } else {
+            return true;
+        }
     }
 }

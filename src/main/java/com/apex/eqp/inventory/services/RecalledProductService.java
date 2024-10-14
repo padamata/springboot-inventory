@@ -12,7 +12,7 @@ import java.util.Optional;
 @RequiredArgsConstructor
 public class RecalledProductService {
 
-    private final RecalledProductRepository recalledProductRepository;
+    private RecalledProductRepository recalledProductRepository;
 
     public RecalledProduct save(RecalledProduct recalledProduct) {
         return recalledProductRepository.save(recalledProduct);
